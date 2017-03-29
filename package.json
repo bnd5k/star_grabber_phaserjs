@@ -1,0 +1,17 @@
+{
+  "name": "phaser_game",
+  "version": "1.0.0",
+  "description": "phaser game from tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Downey",
+  "license": "ISC",
+  "devDependencies": {
+    "httpserver": "^0.3.0"
+  },
+  scripts: {
+    "serve": "http-server"
+  
+}
