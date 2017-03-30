@@ -26,6 +26,7 @@ function preload() {
 var player;
 var platforms;
 var cursors;
+var stars;
 
 function create() {
   //  We're going to be using physics, so enable the Arcade Physics system
@@ -73,6 +74,17 @@ function create() {
   player.animations.add('right', [5,6,7], 10, true);
 
   cursors = game.input.keyboard.createCursorKeys();
+
+  stars = game.add.group();
+  stars.enableBody = true;
+
+  for (var i = 0; i < 12; i ++) {
+    var star = stars.create(i * 70, 0, 'star');
+
+    star.body.gravity.y = 6;
+
+    star.body.bounce.y = 0.7 + Math.random() * 0.2;
+  }
 }
 
 
@@ -96,6 +108,14 @@ function update() {
     player.body.velocity.y = -350;
   }
 
+  game.physics.arcade.collide(stars, platforms);
+
+  game.physics.arcade.overlap(player, stars, collectStar, null, this);
+
+}
+
+function collectStar(player, star) {
+  star.kill();
 }
 
 </script>
